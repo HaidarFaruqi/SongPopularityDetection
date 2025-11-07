@@ -16,6 +16,13 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from lightgbm import LGBMRegressor
 from enhanced_features import create_fold_features
 
+# Check LightGBM version for API compatibility
+try:
+    from lightgbm import early_stopping, log_evaluation
+    LIGHTGBM_NEW_API = True
+except ImportError:
+    LIGHTGBM_NEW_API = False
+
 
 def train_model_with_proper_cv(df_train, features, target_col='popularity', cv_folds=5):
     \"\"\"
@@ -115,13 +122,26 @@ def train_model_with_proper_cv(df_train, features, target_col='popularity', cv_f
         # Train model
         model = LGBMRegressor(**lgbm_params)
 
-        model.fit(
-            X_train_fold, y_train_fold,
-            eval_set=[(X_val_fold, y_val_fold)],
-            eval_metric='rmse',
-            early_stopping_rounds=100,    # Stop jika tidak improve 100 rounds
-            verbose=False
-        )
+        # Use appropriate API based on LightGBM version
+        if LIGHTGBM_NEW_API:
+            # LightGBM >= 4.0.0 (new API with callbacks)
+            model.fit(
+                X_train_fold, y_train_fold,
+                eval_set=[(X_val_fold, y_val_fold)],
+                callbacks=[
+                    early_stopping(stopping_rounds=100, verbose=False),
+                    log_evaluation(period=0)  # Silent logging
+                ]
+            )
+        else:
+            # LightGBM < 4.0.0 (old API)
+            model.fit(
+                X_train_fold, y_train_fold,
+                eval_set=[(X_val_fold, y_val_fold)],
+                eval_metric='rmse',
+                early_stopping_rounds=100,    # Stop jika tidak improve 100 rounds
+                verbose=False
+            )
 
         # Predict on validation
         y_pred = model.predict(X_val_fold)
