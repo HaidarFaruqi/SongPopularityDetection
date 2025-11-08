@@ -13,48 +13,66 @@ Proyek ini mengembangkan model Machine Learning untuk memprediksi popularitas la
 
 ## ✨ Fitur Utama
 
-### 1. Feature Engineering Komprehensif
+### 🆕 NEW! Version 2.0 - Data Cleaning & Enhanced Visualizations
+
+#### 1. Automatic Data Cleaning
+- 🧹 **Invalid Years Fixing**: 21 → 2021, 1 → 2001, 99 → 1999
+- 📊 **Popularity=0 Handling**: Flag feature + pattern detection
+- ✅ **Validation Checks**: Automatic data quality validation
+- 📈 **Before/After Comparison**: Visual comparison of cleaning impact
+
+#### 2. Comprehensive Visualizations (36 total!)
+- 🔍 **Data Quality Inspection** (9 plots): Anomaly detection, distributions, patterns
+- 🆚 **Before/After Cleaning** (6 plots): Cleaning impact visualization
+- 📊 **Detailed EDA** (6 plots): Correlations, trends, distributions
+- 📈 **Model Performance** (15 plots): CV, importance, residuals, errors
+
+#### 3. Feature Engineering Komprehensif
 - ✅ **Artist Target Encoding**: Popularitas rata-rata artist, jumlah lagu
 - ✅ **Audio Interactions**: Energy × Danceability, Artist × Energy
-- ✅ **Temporal Features**: Age, dekade, classic flag, recent hit flag
+- ✅ **Temporal Features**: Age, dekade, classic flag, recent hit flag (NOW ACCURATE!)
 - ✅ **Lyrics NLP**: TF-IDF + Truncated SVD (20 komponen)
 - ✅ **Track Name Features**: Length, word count (cleaned)
+- 🆕 **Zero Popularity Flag**: Pattern detection untuk popularity=0
 
-### 2. Model LightGBM
+#### 4. Model LightGBM
 - ⚡ Fast & Efficient gradient boosting
 - 🎯 Optimized hyperparameters
 - 🔄 5-Fold Cross-Validation
 - 📊 Out-of-Fold predictions untuk analisis
 
-### 3. Comprehensive Visualizations
-15 visualisasi analitik dalam satu gambar:
-- CV performance, Feature importance, Actual vs Predicted
-- Residuals analysis, Error patterns, Q-Q plot
-- Performance by popularity range, dan lainnya
-
-### 4. Detailed Analysis
+#### 5. Detailed Analysis & Insights
 - 📝 Insights report lengkap
 - 🔍 Top 20 worst predictions analysis
 - 📊 Error patterns by genre, year, artist
+- 📈 Metodologi pemilihan fitur yang transparan
 
 ## 📂 Struktur File
 
 ```
 SongPopularityDetection/
 │
-├── song_popularity_predictor.py           # ⭐ Script utama (well-documented)
-├── TPW_AhThatsHot.ipynb                   # Notebook original
+├── song_popularity_predictor.py            # ⭐ Script utama (original)
+├── song_popularity_predictor_v2.py         # 🆕 V2 with data cleaning & viz
+├── song_popularity_predictor_enhanced.ipynb # 📓 Jupyter Notebook (interactive)
+├── TPW_AhThatsHot.ipynb                    # Notebook original
 │
-├── README.md                               # 📖 Dokumentasi utama (file ini)
-├── PENJELASAN_FITUR.md                    # 📚 Penjelasan detail semua fitur
-├── DOKUMENTASI_ALUR.md                    # 🔄 Dokumentasi alur lengkap sistem
+├── README.md                                # 📖 Dokumentasi utama (file ini)
+├── PENJELASAN_FITUR.md                     # 📚 Penjelasan detail semua fitur
+├── DOKUMENTASI_ALUR.md                     # 🔄 Dokumentasi alur lengkap sistem
+├── METODOLOGI_PEMILIHAN_FITUR.md           # 🔬 Metodologi feature selection
+├── DATA_CLEANING_STRATEGY.md               # 🧹 Strategy data cleaning
+├── QUICK_START_WITH_CLEANING.md            # 🚀 Quick start guide V2
 │
-├── train.csv                               # Data training (not included)
-├── test.csv                                # Data testing (not included)
+├── train.csv                                # Data training (not included)
+├── test.csv                                 # Data testing (not included)
 │
-└── outputs/                                # 📤 Folder output
-    ├── submission_siklus4_enhanced.csv    # Prediksi untuk submission
-    └── siklus4_comprehensive_analysis.png # Visualisasi komprehensif (15 plots)
+└── outputs/                                 # 📤 Folder output
+    ├── data_quality_inspection.png         # 🆕 Data quality (9 plots)
+    ├── before_after_cleaning.png           # 🆕 Cleaning comparison (6 plots)
+    ├── eda_visualizations.png              # 🆕 Detailed EDA (6 plots)
+    ├── siklus4_comprehensive_analysis.png  # Model analysis (15 plots)
+    └── submission_siklus4_enhanced.csv     # Prediksi untuk submission
 ```
 
 ## 🚀 Quick Start
