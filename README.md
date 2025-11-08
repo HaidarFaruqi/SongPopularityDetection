@@ -55,6 +55,7 @@ SongPopularityDetection/
 ├── song_popularity_predictor.py            # ⭐ Script utama (original)
 ├── song_popularity_predictor_v2.py         # 🆕 V2 with data cleaning & viz
 ├── song_popularity_predictor_enhanced.ipynb # 📓 Jupyter Notebook (interactive)
+├── SongPopularityPredictor_Colab_Complete.ipynb # 📓🆕 For Google Colab (RECOMMENDED!)
 ├── TPW_AhThatsHot.ipynb                    # Notebook original
 │
 ├── README.md                                # 📖 Dokumentasi utama (file ini)
@@ -63,6 +64,7 @@ SongPopularityDetection/
 ├── METODOLOGI_PEMILIHAN_FITUR.md           # 🔬 Metodologi feature selection
 ├── DATA_CLEANING_STRATEGY.md               # 🧹 Strategy data cleaning
 ├── QUICK_START_WITH_CLEANING.md            # 🚀 Quick start guide V2
+├── COLAB_USAGE_GUIDE.md                    # 📓 Google Colab usage guide
 │
 ├── train.csv                                # Data training (not included)
 ├── test.csv                                 # Data testing (not included)
@@ -77,13 +79,44 @@ SongPopularityDetection/
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### 📓 Option 1: Google Colab (RECOMMENDED untuk iterasi & perbaikan!) ⭐
+
+**Paling mudah dan praktis:**
+
+1. **Buka Notebook di Colab**:
+   ```
+   - Go to: https://colab.research.google.com
+   - File → Open Notebook → GitHub
+   - Paste repo URL
+   - Select: SongPopularityPredictor_Colab_Complete.ipynb
+   ```
+
+2. **Upload Dataset**: train.csv dan test.csv (via file upload di sidebar)
+
+3. **Run All Cells**: Runtime → Run all
+
+4. **Done!** Results dalam ~10 menit ⚡
+
+📖 **Detailed Guide**: [COLAB_USAGE_GUIDE.md](COLAB_USAGE_GUIDE.md)
+
+**Keuntungan Colab**:
+- ✅ No setup required - langsung jalan
+- ✅ Free GPU/TPU (optional)
+- ✅ Visualizations inline
+- ✅ Easy untuk iterasi dan perbaikan
+- ✅ Bisa share notebook
+
+---
+
+### 💻 Option 2: Local Python Script
+
+#### Prerequisites
 
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn lightgbm scipy
 ```
 
-### Menjalankan Script
+#### Menjalankan Script
 
 ```python
 from song_popularity_predictor import SongPopularityPredictor
